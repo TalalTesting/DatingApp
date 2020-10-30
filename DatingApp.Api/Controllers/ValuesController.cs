@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using DatingApp.Api.Data;
 using Microsoft.AspNetCore.Authorization;
@@ -19,6 +17,7 @@ namespace DatingApp.Api.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -26,16 +25,12 @@ namespace DatingApp.Api.Controllers
             return Ok(values);
         }
 
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
             var value = await _context.Values.FirstOrDefaultAsync(x => x.Id == id);
             return Ok(value);
-        }
-
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
         }
     }
 }
