@@ -50,6 +50,7 @@ namespace DatingApp.Api
                         ValidateAudience = false
                     };
                 });
+            services.AddScoped<LogUserActivity>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
